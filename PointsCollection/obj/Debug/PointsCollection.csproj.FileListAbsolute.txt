@@ -1,0 +1,7 @@
+G:\Repoes\PointsCollection\PointsCollection\bin\Debug\PointsCollection.exe.config
+G:\Repoes\PointsCollection\PointsCollection\bin\Debug\PointsCollection.exe
+G:\Repoes\PointsCollection\PointsCollection\bin\Debug\PointsCollection.pdb
+G:\Repoes\PointsCollection\PointsCollection\obj\Debug\PointsCollection.csprojResolveAssemblyReference.cache
+G:\Repoes\PointsCollection\PointsCollection\obj\Debug\PointsCollection.csproj.CoreCompileInputs.cache
+G:\Repoes\PointsCollection\PointsCollection\obj\Debug\PointsCollection.exe
+G:\Repoes\PointsCollection\PointsCollection\obj\Debug\PointsCollection.pdb
