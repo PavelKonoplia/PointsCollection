@@ -63,6 +63,16 @@ namespace PointsCollection
             return new Point(p.X*a, p.Y*a);
         }
 
+        public static Point operator +(Point p1, Point p2)
+        {
+            return new Point(p1.X + p2.X, p1.Y + p2.Y);
+        }
+
+        public static Point operator -(Point p1, Point p2)
+        {
+            return new Point(p1.X - p2.X, p1.Y - p2.Y);
+        }
+
         public static bool operator !=(Point p1, Point p2)
         {
             if ((Math.Abs(p1.X) != Math.Abs(p2.X)) || (Math.Abs(p1.Y) != Math.Abs(p2.Y)) || (p1.Z != p2.Z))

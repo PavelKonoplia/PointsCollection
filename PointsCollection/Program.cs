@@ -41,6 +41,23 @@ namespace PointsCollection
             Console.Write("equal to:");
             p1.WriteState();
             Console.WriteLine();
+            
+            p1.WriteState();
+            Console.Write("plus ");
+            p2.WriteState();
+            p1 = p1 + p2;
+            Console.Write("equal to:");
+            p1.WriteState();
+            Console.WriteLine();
+
+            p1.WriteState();
+            Console.Write("minus ");
+            p2.WriteState();
+            p1 = p1 + p2;
+            Console.Write("equal to:");
+            p1.WriteState();
+            Console.WriteLine();
+
             Console.Write("Is ");
             p1.WriteState();
             Console.Write("equal to ");
