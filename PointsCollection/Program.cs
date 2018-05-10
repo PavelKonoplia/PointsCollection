@@ -32,8 +32,9 @@ namespace PointsCollection
             points.Add(p7);
             points.Add(p8);
             points.Add(p9);
-
-            Console.WriteLine("Point functionality");
+            
+            Console.WriteLine("Point functionality:");
+            Console.WriteLine("********************");
             Console.WriteLine();
             Console.Write("Point multiply: 2 * ");
             p1.WriteState();
@@ -71,9 +72,9 @@ namespace PointsCollection
             p2.WriteState();
             Console.WriteLine(p == p2);
             Console.WriteLine();
-
-            Console.WriteLine("**************************************");
+            
             Console.WriteLine("Collection functionality");
+            Console.WriteLine("************************");
             Console.WriteLine();
             Console.WriteLine("Points Collection is sorted - {0}",points.Sorted);
             Console.WriteLine();
@@ -96,6 +97,7 @@ namespace PointsCollection
             Console.WriteLine("These points were removed from Collection:");
             p.WriteState();
             p1.WriteState();
+            Console.WriteLine();
 
             Console.ReadKey();
         }

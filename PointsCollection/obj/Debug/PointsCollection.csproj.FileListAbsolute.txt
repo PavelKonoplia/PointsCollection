@@ -5,3 +5,10 @@ G:\Repoes\PointsCollection\PointsCollection\obj\Debug\PointsCollection.csprojRes
 G:\Repoes\PointsCollection\PointsCollection\obj\Debug\PointsCollection.csproj.CoreCompileInputs.cache
 G:\Repoes\PointsCollection\PointsCollection\obj\Debug\PointsCollection.exe
 G:\Repoes\PointsCollection\PointsCollection\obj\Debug\PointsCollection.pdb
+C:\Repos\PointsCollection\PointsCollection\bin\Debug\PointsCollection.exe.config
+C:\Repos\PointsCollection\PointsCollection\bin\Debug\PointsCollection.exe
+C:\Repos\PointsCollection\PointsCollection\bin\Debug\PointsCollection.pdb
+C:\Repos\PointsCollection\PointsCollection\obj\Debug\PointsCollection.csprojResolveAssemblyReference.cache
+C:\Repos\PointsCollection\PointsCollection\obj\Debug\PointsCollection.csproj.CoreCompileInputs.cache
+C:\Repos\PointsCollection\PointsCollection\obj\Debug\PointsCollection.exe
+C:\Repos\PointsCollection\PointsCollection\obj\Debug\PointsCollection.pdb

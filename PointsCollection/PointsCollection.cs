@@ -110,6 +110,12 @@ namespace PointsCollection
                 yield return points[i];
             }
         }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
+
         /*
         IEnumerator IEnumerable.GetEnumerator()
         {
@@ -117,70 +123,62 @@ namespace PointsCollection
         }    
         */
 
-        IEnumerator IEnumerable.GetEnumerator()
+        #region  NotUsedYet
+        private class PointsEnumerator : IEnumerator<Point>
         {
-            for (int i = 0; i < points.Count; i++)
+            private PointsCollection _collection;
+            private int curIndex;
+            private Point curPoint;
+
+            public PointsEnumerator(PointsCollection collection)
             {
-                yield return points[i];
+                _collection = collection;
+                curIndex = -1;
+                curPoint = default(Point);
+            }
+
+            public bool MoveNext()
+            {
+                //Avoids going beyond the end of the collection.
+                if (++curIndex >= _collection.Count)
+                {
+                    return false;
+                }
+                else
+                {
+                    // Set current point to next item in collection.
+                    curPoint = _collection[curIndex];
+                }
+                return true;
+            }
+
+            public void Reset() { curIndex = -1; }
+
+            void IDisposable.Dispose() { }
+
+            public Point Current
+            {
+                get { return curPoint; }
+            }
+
+            object IEnumerator.Current
+            {
+                get { return Current; }
             }
         }
-
-
-    }
-
-    public class PointsEnumerator : IEnumerator<Point>
-    {
-        private PointsCollection _collection;
-        private int curIndex;
-        private Point curPoint;
-
-        public PointsEnumerator(PointsCollection collection)
+        private class PointsComparer : IComparer<Point>
         {
-            _collection = collection;
-            curIndex = -1;
-            curPoint = default(Point);
-        }
-
-        public bool MoveNext()
-        {
-            //Avoids going beyond the end of the collection.
-            if (++curIndex >= _collection.Count)
+            public int Compare(Point p1, Point p2)
             {
-                return false;
+                if (p1.DistanceToCenter() > p2.DistanceToCenter())
+                    return 1;
+                else if (p1.DistanceToCenter() < p2.DistanceToCenter())
+                    return -1;
+                else
+                    return 0;
             }
-            else
-            {
-                // Set current point to next item in collection.
-                curPoint = _collection[curIndex];
-            }
-            return true;
         }
-
-        public void Reset() { curIndex = -1; }
-
-        void IDisposable.Dispose() { }
-
-        public Point Current
-        {
-            get { return curPoint; }
-        }
-
-        object IEnumerator.Current
-        {
-            get { return Current; }
-        }
+        #endregion
     }
 
-    public class PointsComparer : IComparer<Point>
-    {
-        public int Compare(Point p1, Point p2)
-        {
-            if (p1.DistanceToCenter() > p2.DistanceToCenter())
-                return 1;
-            else if (p1.DistanceToCenter() < p2.DistanceToCenter())
-                return -1;
-            else
-                return 0;
-        }
-    }
 }
