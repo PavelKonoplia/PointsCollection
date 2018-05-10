@@ -36,41 +36,20 @@ namespace PointsCollection
             Console.WriteLine("Point functionality:");
             Console.WriteLine("********************");
             Console.WriteLine();
-            Console.Write("Point multiply: 2 * ");
-            p1.WriteState();
-            p1 = p1 * 2;
-            Console.Write("equal to:");
-            p1.WriteState();
+
+            Console.WriteLine("2 * ({0}) = ({1})",p1, p1 * 2);
             Console.WriteLine();
             
-            p1.WriteState();
-            Console.Write("plus ");
-            p2.WriteState();
-            p1 = p1 + p2;
-            Console.Write("equal to:");
-            p1.WriteState();
+            Console.WriteLine("({0}) + ({1}) = ({2}) ",p1, p2, p1 + p2);
+            Console.WriteLine();;
+
+            Console.WriteLine("({0}) - ({1}) =({2}) ", p1, p2, p1 + p2);
             Console.WriteLine();
 
-            p1.WriteState();
-            Console.Write("minus ");
-            p2.WriteState();
-            p1 = p1 + p2;
-            Console.Write("equal to:");
-            p1.WriteState();
+            Console.WriteLine("Is {0} == {1} => {2} ", p1, p2, p1 == p2);
             Console.WriteLine();
 
-            Console.Write("Is ");
-            p1.WriteState();
-            Console.Write("equal to ");
-            p2.WriteState();
-            Console.WriteLine(p1 == p2);
-
-            Console.WriteLine();
-            Console.Write("Is ");
-            p.WriteState();
-            Console.Write("equal to ");
-            p2.WriteState();
-            Console.WriteLine(p == p2);
+            Console.WriteLine("Is {0} == {1} => {2} ", p, p2, p == p2);
             Console.WriteLine();
             
             Console.WriteLine("Collection functionality");
@@ -78,25 +57,23 @@ namespace PointsCollection
             Console.WriteLine();
             Console.WriteLine("Points Collection is sorted - {0}",points.Sorted);
             Console.WriteLine();
-            points.WriteState();
-            Console.WriteLine();
+            Console.WriteLine(points.ToString()); 
             Console.WriteLine("--------------------------------------");
             points.Sort();
             Console.WriteLine();
             Console.WriteLine("Points Collection is sorted - {0}", points.Sorted);
             Console.WriteLine();
-            points.WriteState();
+            Console.WriteLine(points.ToString());
 
-            Console.WriteLine();
             Console.WriteLine("--------------------------------------");
+            Console.WriteLine();
             points.Remove(p);
             points.Remove(p1);
-            points.WriteState();
-
-            Console.WriteLine();
+            Console.WriteLine(points.ToString());
             Console.WriteLine("These points were removed from Collection:");
-            p.WriteState();
-            p1.WriteState();
+            Console.WriteLine();
+            Console.WriteLine(p.ToString());
+            Console.WriteLine(p1.ToString());
             Console.WriteLine();
 
             Console.ReadKey();

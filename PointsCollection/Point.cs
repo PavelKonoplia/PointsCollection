@@ -6,10 +6,16 @@ using System.Threading.Tasks;
 
 namespace PointsCollection
 {
-    public class Point : EqualityComparer<Point>, IComparable<Point>
+#pragma warning disable CS0660 // Type defines operator == or operator != but does not override Object.Equals(object o)
+#pragma warning disable CS0661 // Type defines operator == or operator != but does not override Object.GetHashCode()
+    public class Point : IComparable<Point>
+#pragma warning restore CS0661 // Type defines operator == or operator != but does not override Object.GetHashCode()
+#pragma warning restore CS0660 // Type defines operator == or operator != but does not override Object.Equals(object o)
     {
         public int X { get; set; }
         public int Y { get; set; }
+
+        public double AbsoluteValue { get { return Math.Sqrt(Math.Pow(X, 2) + Math.Pow(Y, 2)); } }
 
         public int Z
         {
@@ -31,31 +37,35 @@ namespace PointsCollection
 
         public int CompareTo(Point p)
         {
-            if (DistanceToCenter() > p.DistanceToCenter())
+            if (AbsoluteValue > p.AbsoluteValue)
                 return 1;
-            else if (DistanceToCenter() < p.DistanceToCenter())
+            else if (AbsoluteValue < p.AbsoluteValue)
                 return -1;
             else
                 return 0;
         }
 
-        public double DistanceToCenter()
+        public bool Equals(Point p)
         {
-            return Math.Sqrt(Math.Pow(X, 2) + Math.Pow(Y, 2));
-        }
-
-        public void WriteState()
-        {
-            Console.WriteLine("Point state X={0}, Y={1}, Z={2}", X, Y, Z);
-        }
-
-        public static bool operator ==(Point p1, Point p2)
-        {
-            if ((Math.Abs(p1.X) == Math.Abs(p2.X)) && (Math.Abs(p1.Y) == Math.Abs(p2.Y)) && (p1.Z == p2.Z))
+            if ((Math.Abs(p.X) == Math.Abs(X)) && (Math.Abs(p.Y) == Math.Abs(Y)) && (p.Z == Z))
             {
                 return true;
             }
             return false;
+        }
+
+        public override string ToString ()
+        {
+            return $"X={X}, Y={Y}, Z={Z}";
+        }
+
+        public static bool operator ==(Point p1, Point p2)
+        {
+            return p1.Equals(p2);
+        }
+        public static bool operator !=(Point p1, Point p2)
+        {
+            return !p1.Equals(p2);
         }
 
         public static Point operator *(Point p, int a)
@@ -71,45 +81,6 @@ namespace PointsCollection
         public static Point operator -(Point p1, Point p2)
         {
             return new Point(p1.X - p2.X, p1.Y - p2.Y);
-        }
-
-        public static bool operator !=(Point p1, Point p2)
-        {
-            if ((Math.Abs(p1.X) != Math.Abs(p2.X)) || (Math.Abs(p1.Y) != Math.Abs(p2.Y)) || (p1.Z != p2.Z))
-            {
-                return true;
-            }
-            return false;
-        }
-
-        public override bool Equals(Point p1, Point p2)
-        {
-            if ((Math.Abs(p1.X) == Math.Abs(p2.X)) && (Math.Abs(p1.Y) == Math.Abs(p2.Y)) && (p1.Z == p2.Z))
-            {
-                return true;
-            }
-            return false;
-        }
-
-        public override int GetHashCode(Point p)
-        {
-            int hCode = p.X ^ p.Y ^ p.Z;
-            return hCode.GetHashCode();
-        }
-
-        public override int GetHashCode()
-        {
-            return GetHashCode(this);
-        }
-
-        public override bool Equals(object o)
-        {
-            Point p = o as Point;
-            if ((Math.Abs(p.X) == Math.Abs(X)) && (Math.Abs(p.Y) == Math.Abs(Y)) && (p.Z == Z))
-            {
-                return true;
-            }
-            return false;
         }
     }
 }
