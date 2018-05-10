@@ -32,16 +32,16 @@ namespace PointsCollection
             points.Add(p7);
             points.Add(p8);
             points.Add(p9);
-            
+
             Console.WriteLine("Point functionality:");
             Console.WriteLine("********************");
             Console.WriteLine();
 
-            Console.WriteLine("2 * ({0}) = ({1})",p1, p1 * 2);
+            Console.WriteLine("2 * ({0}) = ({1})", p1, p1 * 2);
             Console.WriteLine();
-            
-            Console.WriteLine("({0}) + ({1}) = ({2}) ",p1, p2, p1 + p2);
-            Console.WriteLine();;
+
+            Console.WriteLine("({0}) + ({1}) = ({2}) ", p1, p2, p1 + p2);
+            Console.WriteLine(); ;
 
             Console.WriteLine("({0}) - ({1}) =({2}) ", p1, p2, p1 + p2);
             Console.WriteLine();
@@ -51,13 +51,13 @@ namespace PointsCollection
 
             Console.WriteLine("Is {0} == {1} => {2} ", p, p2, p == p2);
             Console.WriteLine();
-            
+
             Console.WriteLine("Collection functionality");
             Console.WriteLine("************************");
             Console.WriteLine();
-            Console.WriteLine("Points Collection is sorted - {0}",points.Sorted);
+            Console.WriteLine("Points Collection is sorted - {0}", points.Sorted);
             Console.WriteLine();
-            Console.WriteLine(points.ToString()); 
+            Console.WriteLine(points.ToString());
             Console.WriteLine("--------------------------------------");
             points.Sort();
             Console.WriteLine();
@@ -69,13 +69,20 @@ namespace PointsCollection
             Console.WriteLine();
             points.Remove(p);
             points.Remove(p1);
-            Console.WriteLine(points.ToString());
+
             Console.WriteLine("These points were removed from Collection:");
             Console.WriteLine();
             Console.WriteLine(p.ToString());
             Console.WriteLine(p1.ToString());
             Console.WriteLine();
 
+            Console.WriteLine("--------------------------------------");
+
+            points[-5,3] = new Point(7, 7);
+
+            //Console.WriteLine(points[7, 7].ToString());
+            Console.WriteLine(points.ToString());
+            
             Console.ReadKey();
         }
     }

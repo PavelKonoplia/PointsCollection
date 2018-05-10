@@ -9,32 +9,64 @@ namespace PointsCollection
 {
     public class PointsCollection : ICollection<Point>
     {
-        List<Point> points;
+        private List<Point> _points;
 
         public PointsCollection()
         {
-            points = new List<Point>();
+            _points = new List<Point>();
         }
 
         private bool _sorted = false;
 
         public bool Sorted { get { return _sorted; } }
 
-        public Point this[int index]
+        public Point this[int X, int Y]
         {
             get
             {
-                return points[index];
+                try
+                {
+                    int i = 0;
+                    while (true)
+                    {
+                        if (_points[i].Equals(new Point(X, Y)))
+                        {
+                            return _points[i];
+                        }
+                        i++;
+                    }
+                }
+                catch (ArgumentOutOfRangeException)
+                {
+                    Console.WriteLine("Wrong index!");
+                    throw null;
+                }
             }
             set
             {
-                points[index] = value;
+                try
+                {
+                    int i = 0;
+                    while (true)
+                    {
+                        if (_points[i].Equals(new Point(X, Y)))
+                        {
+                            _points[i] = value;
+                            break;
+                        }
+                        i++;
+                    }
+                }
+                catch (ArgumentOutOfRangeException e)
+                {
+                    Console.WriteLine("Wrong index!");
+                }
             }
         }
 
         public int Count
         {
-            get { return points.Count; }
+            get { return _points.Count; }
         }
 
         public bool IsReadOnly
@@ -44,15 +76,15 @@ namespace PointsCollection
 
         public void Sort()
         {
-            points.Sort();
+            _points.Sort();
             _sorted = true;
         }
 
         public void Add(Point p)
         {
-            if (!points.Contains(p))
+            if (!_points.Contains(p))
             {
-                points.Add(p);
+                _points.Add(p);
             }
         }
 
@@ -65,20 +97,20 @@ namespace PointsCollection
             if (Count > array.Length - arrayIndex + 1)
                 throw new ArgumentException("The destination array has fewer elements than the collection.");
 
-            for (int i = 0; i < points.Count; i++)
+            for (int i = 0; i < _points.Count; i++)
             {
-                array[i + arrayIndex] = points[i];
+                array[i + arrayIndex] = _points[i];
             }
         }
 
         public bool Remove(Point p)
         {
-            return points.Remove(p);
+            return _points.Remove(p);
         }
 
         public bool Contains(Point p1)
         {
-            foreach (Point p in points)
+            foreach (Point p in _points)
             {
                 // Equality defined by the Point
                 if (p.Equals(p1))
@@ -91,24 +123,24 @@ namespace PointsCollection
 
         public void Clear()
         {
-            points.Clear();
+            _points.Clear();
         }
 
         public override string ToString()
         {
             string s = "";
-            foreach (Point p in points)
+            foreach (Point p in _points)
             {
-                s+= p.ToString() + "\n";
+                s += p.ToString() + "\n";
             }
             return s;
         }
 
         public IEnumerator<Point> GetEnumerator()
         {
-            for (int i = 0; i < points.Count; i++)
+            for (int i = 0; i < _points.Count; i++)
             {
-                yield return points[i];
+                yield return _points[i];
             }
         }
 
